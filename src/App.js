@@ -7,16 +7,22 @@ const App = () => {
   const [showSearch, setShowSearch] = useState(false);
 
   const handleSearchClick = () => {
-    setShowSearch(!showSearch);
-    setSearchTerm(''); // Clear the search term when closing the search bar
+    setShowSearch(true); // Open the search bar
+  };
+
+  const handleBackClick = () => {
+    setShowSearch(false); // Close the search bar
+    setSearchTerm('');    // Clear the search term
   };
 
   return (
     <div className="App">
       <header className="App-header">
-        <button className="back-button">
+      {showSearch && (
+        <button className="back-button" onClick={handleBackClick}>
           <i className="fas fa-arrow-left"></i>
         </button>
+      )}
         <h1>Romantic Comedy</h1>
         <button className="search-button" onClick={handleSearchClick}>
           <i className="fas fa-search"></i>
